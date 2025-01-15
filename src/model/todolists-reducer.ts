@@ -1,6 +1,7 @@
 // создание нового стейта
 
 import {FilterValues, TodolistType} from "../App";
+import {v1} from "uuid";
 
 
 type DeleteTodolistAT = {
@@ -10,7 +11,7 @@ type DeleteTodolistAT = {
     }
 }
 
-type CreateTodolistAT = {
+export type CreateTodolistAT = {
     type: 'CREATE_TODOLIST'
     payload: {
         title: string
@@ -76,11 +77,11 @@ export const DeleteTodolistAC = (id: string): DeleteTodolistAT => {
     })
 }
 
-export const CreateTodolistAC = (id: string,title: string): CreateTodolistAT => {
+export const CreateTodolistAC = (title: string): CreateTodolistAT => {
     return ({
         type: 'CREATE_TODOLIST',
         payload: {
-            id: id, //сокращенно просто id
+            id: v1(), //сокращенно просто id
             title: title //сокращенно просто title
         }
     })
