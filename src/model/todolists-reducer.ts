@@ -4,7 +4,7 @@ import {FilterValues, TodolistType} from "../App";
 import {v1} from "uuid";
 
 
-type DeleteTodolistAT = {
+export type DeleteTodolistAT = {
     type: 'DELETE_TODOLIST'
     payload: {
         id: string
