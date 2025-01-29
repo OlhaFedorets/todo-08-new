@@ -44,9 +44,16 @@ export const tasksReducer = (tasks: TasksStateType, action: ActionsType): TasksS
         }
 
         case 'DELETE_TODOLIST': {
-            const {id} = action.payload
-            delete tasks[id]
-            return {...tasks}
+            const tasksCopy = {...tasks}
+            delete tasksCopy[action.payload.id]
+            return tasksCopy
+
+            // const {id} = action.payload
+            // delete tasks[id]
+            // return {...tasks}
+
+            // const {[action.payload.id]: _, ...rest} = tasks    Этот способ не рекомендуется использовать,
+            // return rest                                         так как он менее понятен для прочтения (менее читабельный)
         }
         default:
             return tasks;
